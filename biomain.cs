@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+// TODO: Resolve all data types used. I've hucked in whatever seemed appropriate from a cursory glance
+
 namespace BioManFactory 
 {
     class MainRunner 
@@ -15,11 +17,50 @@ namespace BioManFactory
         }
     }
 
-    class Event {}
-    class Job {}
-    class Machine {}
-    class Queue {}
-    class Operator {}
+    // Event_type includes arrival, harvest, process, finish 
+    // Event is defined as a point on the timeline.
+    class Event 
+    {
+        Event();
+        Event(string name, string? e_type, string? e_happen_time, string? place, Machine machine, Operator operator, Job job);
+        string[] getEventInfo();
+    }
+
+    class Job 
+    {
+        Job();
+        Job(string? name, string? place, string? state);
+        void startRework(int this_clock);
+        void enterSys(int this_clock);
+        void leaveSys(int this_clock);
+        void booked();
+    }
+
+    class Machine 
+    {
+        Machine();
+        Machine(string? name, string? m_type);
+        void startSetup(Job job, Operator operator);
+        void endSetup();
+        void startWork();
+        void endWork();
+        void booked();
+    }
+    class Queue 
+    {
+        Queue();
+        Queue(string? name, string? q_type);
+        void addJob(Job job);
+        void removeJob(Job job);
+    }
+
+    class Operator 
+    {
+        Operator();
+        Operator(string? name, string? o_type);
+        void booked();
+    }
+    
     class Design {} // Need to figure out what this design majig is
 
     class Environment 
