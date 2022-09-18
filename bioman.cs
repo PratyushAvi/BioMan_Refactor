@@ -14,6 +14,7 @@ namespace BioManFactory
         static void Main(string[] args) 
         {
             /// INSERT A BUNCH OF CODE AT THE BOTTOM OF BM_Factory.py
+            Console.WriteLine("Welcome to C# BioMan!");
         }
     }
 
